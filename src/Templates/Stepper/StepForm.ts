@@ -5,7 +5,7 @@ import { StepQuestion } from './StepQuestion'
 export const PREFIX__ID__QUESTION = 'step_question_'
 
 export class StepForm extends HTMLElement {
-  static get observedAttributes() { return ['text', 'selected'] }
+  static get observedAttributes() { return ['show-footer', 'show-button'] }
   
   callbackResult(arg: any): any {}
 
@@ -51,8 +51,14 @@ export class StepForm extends HTMLElement {
           cursor: pointer;
           border-radius: .25em;
         }
+        :host(:not([show-button])) #button {
+          display: none;
+        }
+        :host(:not([show-button])) #footer {
+          display: none;
+        }
       </style>
-      <h1 id="title">Formulario (acá irá el título)</h1>
+      <h1 id="title"></h1>
       <div id="container">
       </div>
       <button id="button">
@@ -95,7 +101,9 @@ export class StepForm extends HTMLElement {
   attributeChangedCallback(name: string, oldValue, newValue) {
     if(newValue !== oldValue) {
       switch(name) {
-        case 'text':
+        case 'show-footer':
+          break
+        case 'show-button':
           break
       }
     }

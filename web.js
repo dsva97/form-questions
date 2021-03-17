@@ -11,6 +11,9 @@
       this.$root = this.attachShadow({mode: "closed"});
       this.$root.innerHTML = `
       <style>
+        * {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         :host {
           --size: 20px;
           --space: .5em;
@@ -131,7 +134,7 @@
   var PREFIX__ID__QUESTION = "step_question_";
   var StepForm = class extends HTMLElement {
     static get observedAttributes() {
-      return ["text", "selected"];
+      return ["show-footer", "show-button"];
     }
     callbackResult(arg) {
     }
@@ -170,8 +173,14 @@
           cursor: pointer;
           border-radius: .25em;
         }
+        :host(:not([show-button])) #button {
+          display: none;
+        }
+        :host(:not([show-button])) #footer {
+          display: none;
+        }
       </style>
-      <h1 id="title">Formulario (ac\xE1 ir\xE1 el t\xEDtulo)</h1>
+      <h1 id="title"></h1>
       <div id="container">
       </div>
       <button id="button">
@@ -210,7 +219,9 @@
     attributeChangedCallback(name, oldValue, newValue) {
       if (newValue !== oldValue) {
         switch (name) {
-          case "text":
+          case "show-footer":
+            break;
+          case "show-button":
             break;
         }
       }
@@ -239,6 +250,9 @@
       this.$root = this.attachShadow({mode: "closed"});
       this.$root.innerHTML = `
     <style>
+      * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
       #container {
         display: grid;
         grid-gap: 1em;
@@ -440,5 +454,10 @@
         }
       }
     });
+  };
+
+  // src/buildInWindows.ts
+  window["Stepper"] = {
+    normalizeQuestions
   };
 })();

@@ -43,6 +43,9 @@ export class StepOption extends HTMLElement implements IOption {
     this.$root = this.attachShadow({ mode: 'closed' })
     this.$root.innerHTML = /* html */`
       <style>
+        * {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         :host {
           --size: 20px;
           --space: .5em;
