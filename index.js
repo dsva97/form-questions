@@ -138,11 +138,17 @@
     }
     callbackResult(arg) {
     }
+    getResult() {
+      return this.callbackResult(this.questions);
+    }
     constructor() {
       super();
       this.$root = this.attachShadow({mode: "open"});
       this.$root.innerHTML = `
       <style>
+        * {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         html, :host, :host() {
           scroll-behavior: smooth;
         }

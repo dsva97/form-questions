@@ -11,9 +11,10 @@
   },
   "devDependencies": {},
   "scripts": {
+    "build:test": "npx esbuild src/test.ts --bundle --outfile=dist/bundle.js",
     "build:web": "npx esbuild src/buildInWindows.ts --bundle --outfile=web.js",
     "build:npm": "npx esbuild src/index.ts --bundle --outfile=index.js",
-    "build": "npm run build:web && npm run build:npm",
+    "build": "npm run build:test && npm run build:npm && npm run build:web",
     "dev": "nodemon --config nodemon.json --exec \"npx esbuild src/test.ts --bundle --outfile=dist/build.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -8,6 +8,10 @@ export class StepForm extends HTMLElement {
   static get observedAttributes() { return ['show-footer', 'show-button'] }
   
   callbackResult(arg: any): any {}
+  
+  getResult() {
+    return this.callbackResult(this.questions)
+  }
 
   $root: ShadowRoot;
 
@@ -21,6 +25,9 @@ export class StepForm extends HTMLElement {
     this.$root = this.attachShadow({ mode: 'open' })
     this.$root.innerHTML = /* html */`
       <style>
+        * {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         html, :host, :host() {
           scroll-behavior: smooth;
         }
